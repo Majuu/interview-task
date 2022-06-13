@@ -23,6 +23,7 @@ const styles = {
 const ListView: FunctionComponent = (): ReactElement => {
     const [data, setData] = useState<Array<MockedDataInterface>>(mockedData);
     const [elementsCount, setElementsCount] = useState<number>(0);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,13 +35,13 @@ const ListView: FunctionComponent = (): ReactElement => {
     }
 
     const recalculateClickedElements = (): void => {
-        const numberOfCheckedItems = data.filter(singleDataItem => !singleDataItem.is_unread)
+        const numberOfCheckedItems = data.filter(singleDataItem => !singleDataItem.is_unread);
         setElementsCount(numberOfCheckedItems.length);
     }
 
     const changeCheckboxState = (item: MockedDataInterface): void => {
-        const updatedData = data.map((singleItem) => { return singleItem.id === item.id ? {...singleItem, is_unread: !singleItem.is_unread} : singleItem });
-        setData(updatedData)
+        const updatedData: Array<MockedDataInterface> = data.map((singleItem) => { return singleItem.id === item.id ? {...singleItem, is_unread: !singleItem.is_unread} : singleItem });
+        setData(updatedData);
         recalculateClickedElements();
     }
 
@@ -50,7 +51,7 @@ const ListView: FunctionComponent = (): ReactElement => {
             {data.map(item => 
                 <div key={item.id} style={styles.checkboxContainer}>
                     <input style={styles.checkbox} type="checkbox" defaultChecked={!item.is_unread} onChange={() => changeCheckboxState(item)} />
-                    <label onClick={() => goToDetailsView(item)} >
+                    <label onClick={() => goToDetailsView(item)}>
                         {item.subject}
                     </label>
                 </div>
