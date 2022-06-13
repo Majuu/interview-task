@@ -29,7 +29,7 @@ const ListView: FunctionComponent = (): ReactElement => {
         recalculateClickedElements();   
     })
 
-    const goToDetailsView = (item: MockedDataInterface): void => { // CONSTS OR CALLBACKS?
+    const goToDetailsView = (item: MockedDataInterface): void => {
         navigate(`../${ROUTES.DETAILS_VIEW}`, {state: item});
     }
 
