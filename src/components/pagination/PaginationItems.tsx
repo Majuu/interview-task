@@ -1,7 +1,8 @@
-import { FunctionComponent, ReactElement } from "react";
+import { Fragment, FunctionComponent, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../enums/routes.enum";
 import { MockedDataInterface } from "../../interfaces/mocked-data.interface";
+import './Pagination.css';
 
 const PaginationItems: FunctionComponent<{items: Array<MockedDataInterface>, onCheckboxChange: (item: MockedDataInterface) => void}> = ({items, onCheckboxChange}): ReactElement => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const PaginationItems: FunctionComponent<{items: Array<MockedDataInterface>, onC
     }
 
     return (
-        <>
+        <Fragment>
           {items &&
             items.map((item) => (
                 <div key={item.id} className="checkbox-container">
@@ -21,7 +22,7 @@ const PaginationItems: FunctionComponent<{items: Array<MockedDataInterface>, onC
                 </label>
             </div>
             ))}
-        </>
+        </Fragment>
       );
 }
 

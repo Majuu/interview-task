@@ -19,12 +19,12 @@ const DetailsView: FunctionComponent = (): ReactElement => {
             <p>Details view</p>
             <table className="table-container table-row">
                 <tbody>
-                { Object.keys(state).map((key) =>
-                <tr key={key}>
-                    <td className="table-row">{key}</td>
-                    <td className="table-row">{state[key as keyof MockedDataInterface].toString()}</td>
-                </tr>
-                )}
+                    { Object.keys(state).map(key =>
+                    <tr key={key}>
+                        <td className="table-row">{key}</td>
+                        <td className="table-row">{state[key as keyof MockedDataInterface].toString()}</td>
+                    </tr>
+                    )}
                 </tbody>
             </table>
             <button onClick={goToListView}>Go back to the list</button>
