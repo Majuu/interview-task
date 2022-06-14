@@ -1,7 +1,7 @@
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import './App.css';
-import DetailsView from './components/DetailsView';
-import ListView from './components/ListView';
+import DetailsView from './components/details-view/DetailsView';
+import ListView from './components/list-view/ListView';
 import { ROUTES } from './enums/routes.enum';
 
 function App() {
