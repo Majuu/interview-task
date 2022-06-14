@@ -2,7 +2,7 @@ import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../enums/routes.enum';
 import { MockedDataInterface } from '../interfaces/mocked-data.interface';
-import mockedData from '../mocked-data/mocked-data'
+import data from '../mocked-data/mocked-data'
 
 const styles = {
     checkboxContainer : {
@@ -21,7 +21,6 @@ const styles = {
 }
 
 const ListView: FunctionComponent = (): ReactElement => {
-    const [data, setData] = useState<Array<MockedDataInterface>>(mockedData);
     const [elementsCount, setElementsCount] = useState<number>(0);
     
     const navigate = useNavigate();
@@ -35,14 +34,7 @@ const ListView: FunctionComponent = (): ReactElement => {
     }
 
     const recalculateClickedElements = (): void => {
-        const numberOfCheckedItems = data.filter(singleDataItem => !singleDataItem.is_unread);
-        setElementsCount(numberOfCheckedItems.length);
-    }
-
-    const changeCheckboxState = (item: MockedDataInterface): void => {
-        const updatedData: Array<MockedDataInterface> = data.map((singleItem) => { return singleItem.id === item.id ? {...singleItem, is_unread: !singleItem.is_unread} : singleItem });
-        setData(updatedData);
-        recalculateClickedElements();
+        setElementsCount(document.querySelectorAll('input[type="checkbox"]:checked').length)
     }
 
     return(
@@ -50,7 +42,7 @@ const ListView: FunctionComponent = (): ReactElement => {
             <p>List View</p>
             {data.map(item => 
                 <div key={item.id} style={styles.checkboxContainer}>
-                    <input style={styles.checkbox} type="checkbox" defaultChecked={!item.is_unread} onChange={() => changeCheckboxState(item)} />
+                    <input style={styles.checkbox} type="checkbox" defaultChecked={!item.is_unread} onChange={recalculateClickedElements} />
                     <label onClick={() => goToDetailsView(item)}>
                         {item.subject}
                     </label>
