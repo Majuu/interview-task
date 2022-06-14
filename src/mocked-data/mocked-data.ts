@@ -20,7 +20,6 @@ const data: Array<MockedDataInterface> = [
         "snippet": "Odbierz 50% rabatu na wymianę online"
     },
 
-
     // {
     //     "id": 1007952291,
     //     "from": "Kalkulator OC/AC - Onet mailingi@onet.pl",

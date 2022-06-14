@@ -2,6 +2,7 @@ import { Fragment, FunctionComponent, ReactElement } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../enums/routes.enum";
 import { MockedDataInterface } from "../../interfaces/mocked-data.interface";
+import './DetailsView.css';
 
 const DetailsView: FunctionComponent = (): ReactElement => {
     const navigate = useNavigate();

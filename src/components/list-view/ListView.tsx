@@ -12,10 +12,6 @@ const ListView: FunctionComponent = (): ReactElement => {
         recalculateClickedElements();   
     })
 
-    // const recalculateClickedElements = (): void => {
-    //     setElementsCount(document.querySelectorAll('input[type="checkbox"]:checked').length)
-    // }
-
     const recalculateClickedElements = (): void => {
         const numberOfCheckedItems = data.filter(singleDataItem => !singleDataItem.is_unread);
         setElementsCount(numberOfCheckedItems.length);
@@ -26,7 +22,7 @@ const ListView: FunctionComponent = (): ReactElement => {
         setData(updatedData);
         recalculateClickedElements();
     }
-
+    // Added pagination due to task point saying that number of elements could be much bigger (100 / 1000 / 10000)
     return(
         <div>
             <p>List View</p>
