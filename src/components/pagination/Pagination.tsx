@@ -13,7 +13,7 @@ useEffect(() => {
   const endOffset = itemOffset + itemsPerPage;
   setCurrentItems(items.slice(itemOffset, endOffset));
   setPageCount(Math.ceil(items.length / itemsPerPage));
-}, [itemOffset, itemsPerPage]);
+}, [itemOffset, itemsPerPage, items]);
 
 const handlePageClick = (event: any) => {
   const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -31,7 +31,6 @@ return (
       pageCount={pageCount}
       previousLabel="< previous"
     containerClassName="container"
-    //   renderOnZeroPageCount={null}
     />
   </Fragment>
 );
